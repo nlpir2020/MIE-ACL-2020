@@ -409,6 +409,8 @@ class Data:
                 take(indexes_batch, 0)
             labels_batch = self.datasets[name]['labels'].\
                 take(indexes_batch, 0)
+            chunk_seqs_batch = chunk_seqs_batch[:, None, :]
+            chunk_seqs_len_batch = chunk_seqs_len_batch[:, None]
             yield chunk_seqs_batch, chunk_seqs_len_batch, labels_batch
 
     def batch(self, name, batch_size, shuffle=True):
